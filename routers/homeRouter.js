@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', fliqController.index);
-router.get('/new', fliqController.newPatient);
-router.get('/edit', fliqController.edit);
-router.get('/delete/id', fliqController.remove);
-router.get('/view/:id/', fliqController.view);
-router.post('/add', fliqController.add);
-router.post('/update', fliqController.update);
+const homeController = require('../controllers/homeController');
+
+router.get('/', homeController.index);
+router.get('/new', homeController.newPatient);
+router.get('/edit/:id', homeController.edit);
+router.get('/delete/:id', homeController.remove);
+router.get('/view/:id/', homeController.view);
+router.post('/add', homeController.add);
+router.post('/update', homeController.update);
 
 
 module.exports = router;

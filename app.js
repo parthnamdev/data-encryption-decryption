@@ -9,7 +9,7 @@ const app = express();
 const homeRouter = require('./routers/homeRouter');
 
 // ejs
-app.set()
+app.set('view engine', 'ejs')
 
 // middleware
 app.use(express.urlencoded({extended: true}));
@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: true}));
 // database
 // const uri = `${"mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+".fzmhp.mongodb.net/"+process.env.ATLAS_DB_NAME+"?retryWrites=true&w=majority"}`;
 const uri = 'mongodb://localhost:27017/isaaDB';
-mongoose.connect(uri, { useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex: true, useFindAndModify: false });
+mongoose.connect(uri, { useNewUrlParser:true, useUnifiedTopology:true });
 const db = mongoose.connection;
 
 db.on("error", (err) => {
@@ -32,8 +32,14 @@ db.once("open", () => {
 app.use('/',express.static(__dirname + '/public'));
 app.use('/',express.static(__dirname + "/node_modules/@fortawesome"));
 
+app.use('/view',express.static(__dirname + '/public'));
+app.use('/view',express.static(__dirname + "/node_modules/@fortawesome"));
+
+app.use('/edit',express.static(__dirname + '/public'));
+app.use('/edit',express.static(__dirname + "/node_modules/@fortawesome"));
+
 // routes
-app.use('/', mainRouter);
+app.use('/', homeRouter);
 
 
 const port = process.env.PORT || 3000;

@@ -1,0 +1,24 @@
+
+body{
+    font-family: 'Cabin', sans-serif;
+    text-align: center;
+}
+
+.custom-padding{
+    padding: 5% 12%;
+}
+
+.brand {
+    font-size: 1.5rem;
+    color: #0d6efd;
+    letter-spacing: 10px;
+    text-decoration: none;
+}
+
+.far, .fas {
+    font-size: 1.3rem;
+}
+
+.large-top-margin {
+    margin-top: 100px;
+}
