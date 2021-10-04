@@ -79,7 +79,6 @@ const update = (req, res) => {
         symptoms: symptoms,
         gender: req.body.gender
     }
-    console.log(req.body.id);
     Patient.findByIdAndUpdate(req.body.id,updated,(err, docs) => {
         if(!err) {
             res.redirect('/');
